@@ -1,11 +1,22 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $categories = Category::all();
+
+    return view('categories', [
+        'categories' => $categories,
+    ]);
 });
+
+Route::get('/posts', function(){
+
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
