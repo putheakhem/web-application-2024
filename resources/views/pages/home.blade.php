@@ -6,18 +6,12 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite([
+    'resources/css/app.css',
+    'resources/js/app.js',
+    ])
 </head>
 <body>
-
-@foreach($categories as $category)
-    <h1 class="text-amber-400 text-3xl">{{ $category->title }}</h1>
-    @foreach($category->posts as $post)
-        <h2 class="text-sm">
-                {{ $post->title }}
-        </h2>
-    @endforeach
-@endforeach
-
+    Home Page
 </body>
 </html>

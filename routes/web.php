@@ -2,19 +2,30 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
+
+// 127.0.0.1:8000/     => index.php
+
+Route::get('/home', function() {
+    return view('pages.home');  // resources/views/home.blade.php
+});
 Route::get('/', function () {
 
-    $categories = Category::all();
-
+    $categories = Category::with('posts')->get();
     return view('categories', [
         'categories' => $categories,
     ]);
 });
+// cadt.edu.kh/posts
 
-Route::get('/posts', function(){
+Route::get('posts', function() {
 
+    return view('pages.post', [
+        'title' => 'Post',
+        'posts' => Post::with('category')->get(),
+    ]);
 });
 
 
